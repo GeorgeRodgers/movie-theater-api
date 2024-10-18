@@ -15,8 +15,8 @@ userRouter.get(`/:id`, async (req, res) => {
 });
 
 userRouter.get(`/:id/shows`, async (req, res) => {
-    const user = await User.findByPk(req.params.id, {include: {model: Show}});
-    res.json(user);
+    const userWithShows = await User.findByPk(req.params.id, {include: {model: Show}});
+    res.json(userWithShows);
 });
 
 userRouter.put(`/:userid/shows/:showid`, async (req, res) => {
@@ -27,4 +27,4 @@ userRouter.put(`/:userid/shows/:showid`, async (req, res) => {
     res.json(updatedUser);
 });
 
-module.exports = {userRouter};
+module.exports = { userRouter };
